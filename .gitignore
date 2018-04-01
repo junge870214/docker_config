@@ -4,4 +4,6 @@ nginx/nginx/
 nginx/lylinux.net/
 web/codes/DjangoBlog/
 wordpress/wordpress/
-.env/
+.env
+nginx/resource/
+wordpress/php/
