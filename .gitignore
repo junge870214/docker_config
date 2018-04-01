@@ -7,3 +7,4 @@ wordpress/wordpress/
 .env
 nginx/resource/
 wordpress/php/
+*.sql
