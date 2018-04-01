@@ -2,7 +2,7 @@
 docker rmi $(docker images -q -f dangling=true) -f
 #清理所有容器
 docker rm $(docker ps -a -q) -f
-rm -rf  db/var/lib/mysql/*
+#rm -rf  db/var/lib/mysql/*
 docker-compose build
 docker-compose up 
 

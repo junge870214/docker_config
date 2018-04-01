@@ -4,7 +4,6 @@ services:
   db:
     build: ./db
     restart: always
-    user: '1000:50'
     env_file:
       - ".env"
     environment:
@@ -54,6 +53,7 @@ services:
       - ".env"
     volumes:
       - ./wordpress/wordpress:/wordpress
+      - ./wordpress/php/usr/local/etc/:/usr/local/etc/
     links:
       - db
     depends_on:
@@ -68,6 +68,7 @@ services:
     volumes:
       - ./nginx/lylinux.net /etc/letsencrypt/live/lylinux.net/
       - ./nginx/nginx/ /etc/nginx
+      - ./nginx/resource /resource/
     volumes_from:
       - djangoblog
       - wordpress
@@ -79,4 +80,3 @@ services:
   memcached:
     build: ./memcached/
     container_name: memcached
-  
