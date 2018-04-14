@@ -8,3 +8,4 @@ wordpress/wordpress/
 nginx/resource/
 wordpress/php/
 *.sql
+dev/mysql

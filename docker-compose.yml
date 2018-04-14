@@ -37,6 +37,7 @@ services:
     command:  bash -c  'sh DjangoBlog/bin/docker_start.sh'
     volumes:
       - /root/docker/DjangoBlog/:/code/DjangoBlog
+      - /root/docker/resource:/var/www/resource/
     #ports:
       #- "8000:8000"
     links:
@@ -66,7 +67,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /root/docker/service_configs/lylinux.net:/etc/letsencrypt/live/lylinux.net/
+      - /root/docker/service_configs/ssl/lylinux.net/:/letsencrypt/
       - /root/docker/service_configs/nginx/:/etc/nginx
       - /root/docker/resource:/resource/
     volumes_from:
