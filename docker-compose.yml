@@ -15,7 +15,7 @@ services:
       #- 3306:3306
     volumes:
       - ./db/var/lib/mysql/:/var/lib/mysql
-      - /root/docker/service_configs//mysql/conf.d/:/etc/mysql/conf.d/
+      - ${DOCKER_ROOT_PATH}/service_configs//mysql/conf.d/:/etc/mysql/conf.d/
     depends_on:
       - memcached
     container_name: db
@@ -23,7 +23,7 @@ services:
     image:
       phpmyadmin/phpmyadmin
     #ports:
-      #- 8080:80
+      #- 8081:80
     env_file:
       - ".env"
     container_name: phpmyadmin
@@ -34,12 +34,12 @@ services:
     restart: always
     env_file:
       - ".env"
-    command:  bash -c  'sh DjangoBlog/bin/docker_start.sh'
+    command:  bash -c  'sh /code/DjangoBlog/bin/docker_start.sh'
     volumes:
-      - /root/docker/DjangoBlog/:/code/DjangoBlog
-      - /root/docker/resource:/var/www/resource/
+      - ${DOCKER_ROOT_PATH}/DjangoBlog/:/code/DjangoBlog
+      - ${DOCKER_ROOT_PATH}/resource:/var/www/resource/
     #ports:
-      #- "8000:8000"
+     # - "8000:8000"
     links:
       - db
     depends_on:
@@ -49,12 +49,12 @@ services:
     build: ./wordpress
     restart: always
     #ports:
-      #- "9000:9000"
+      #- "9001:9000"
     env_file:
       - ".env"
     volumes:
-      - /root/docker/wordpress:/wordpress
-      - /root/docker/service_configs/php/usr/local/etc/:/usr/local/etc/
+      - ${DOCKER_ROOT_PATH}/wordpress:/wordpress
+      - ${DOCKER_ROOT_PATH}/service_configs/php/usr/local/etc/:/usr/local/etc/
     links:
       - db
     depends_on:
@@ -67,10 +67,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /root/docker/service_configs/ssl/lylinux.net/:/letsencrypt/
-      - /root/docker/service_configs/nginx/:/etc/nginx
-      - /root/docker/resource:/resource/
-      - /root/docker/logs/nginx:/var/log/nginx/
+      - ${DOCKER_ROOT_PATH}/service_configs/ssl/lylinux.net/:/letsencrypt/
+      - ${DOCKER_ROOT_PATH}/service_configs/nginx/:/etc/nginx
+      - ${DOCKER_ROOT_PATH}/resource:/resource/
+      - ${DOCKER_ROOT_PATH}/logs/nginx:/var/log/nginx/
     volumes_from:
       - djangoblog
       - wordpress

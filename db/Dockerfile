@@ -1,6 +1,6 @@
 FROM mysql
 
-RUN mkdir -p /var/lib/mysql/ && chown -R mysql:root /var/lib/mysql/ && \
+RUN mkdir -p /var/lib/mysql/ && mkdir -p /var/log/mysql/  && chown -R mysql:root /var/lib/mysql/ && \
     chown -R mysql:mysql /var/lib/mysql/ && \
     chown -R mysql:mysql /var/log/mysql/ && \
     chown -R  mysql /var/lib/mysql && \
