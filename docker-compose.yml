@@ -4,7 +4,7 @@ services:
   db:
     build: ./db
     restart: always
-    mem_limit: 400m
+    mem_limit: 500m
     env_file:
       - ".env"
     environment:
@@ -33,7 +33,7 @@ services:
   djangoblog:
     build: ./djangoblog/
     restart: always
-    mem_limit: 400m
+    mem_limit: 500m
     env_file:
       - ".env"
     command:  bash -c  'sh /code/DjangoBlog/bin/docker_start.sh'
@@ -50,7 +50,7 @@ services:
   wordpress:
     build: ./wordpress
     restart: always
-    mem_limit: 300m
+    mem_limit: 100m
     #ports:
       #- "9001:9000"
     env_file:
