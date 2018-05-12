@@ -24,7 +24,7 @@ RUN  apt-get update && apt-get install -y --no-install-recommends unzip libssl-d
 #WORKDIR /usr/src/php/ext/memcached
 #RUN docker-php-ext-configure memcached \
 #  && docker-php-ext-install memcached
-RUN mkdir -p /wordpress/
-ADD ./wordpress/ /wordpress/
-RUN chown -R www-data:www-data /wordpress/
-WORKDIR /wordpress/
+#RUN mkdir -p /wordpress/
+#ADD ./wordpress/ /wordpress/
+#RUN chown -R www-data:www-data /wordpress/
+#WORKDIR /wordpress/
