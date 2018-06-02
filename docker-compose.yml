@@ -47,6 +47,23 @@ services:
     depends_on:
       - db
     container_name: djangoblog
+  xiaobiaobai:
+    build: ./xiaobiaobai/
+    restart: always
+    mem_limit: 500m
+    env_file:
+      - ".env"
+    command:  bash -c  'sh /code/xiaobiaobai.api/bin/docker_start.sh'
+    volumes:
+      - ${DOCKER_ROOT_PATH}/xiaobiaobai.api/:/code/xiaobiaobai.api
+      - ${DOCKER_ROOT_PATH}/resource:/var/www/resource/
+    #ports:
+     # - "8000:8000"
+    links:
+      - db
+    depends_on:
+      - db
+    container_name: xiaobiaobai
   wordpress:
     build: ./wordpress
     restart: always
