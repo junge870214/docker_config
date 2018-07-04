@@ -90,14 +90,17 @@ services:
       - ${DOCKER_ROOT_PATH}/service_configs/ssl/lylinux.net/:/letsencrypt/
       - ${DOCKER_ROOT_PATH}/service_configs/nginx/:/etc/nginx
       - ${DOCKER_ROOT_PATH}/resource:/resource/
+      - /home/lixiao/depolyfile/deploy:/home/lixiao/depolyfile/deploy
       - ${DOCKER_ROOT_PATH}/logs/nginx:/var/log/nginx/
     volumes_from:
       - djangoblog
       - wordpress
+      - xiaobiaobai
     links:
       - djangoblog:djangoblog
       - wordpress:wordpress
       - phpmyadmin:phpmyadmin
+      - xiaobiaobai:xiaobiaobai
     container_name: nginx
   memcached:
     build: ./memcached/
