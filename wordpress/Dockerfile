@@ -4,7 +4,8 @@ FROM php:7.1-fpm
 #COPY  ./php /usr/local/etc/
 #RUN  mkdir -p /usr/local/etc/php/conf.d/
 RUN docker-php-ext-install  mysqli pdo pdo_mysql
-
+RUN rm /etc/apt/sources.list
+ADD ./sources.list  /etc/apt/sources.list
 RUN  apt-get update && apt-get install -y --no-install-recommends unzip libssl-dev libpcre3 libpcre3-dev  zlib1g-dev \
     && cd /tmp \
     && curl -sSL -o php7.zip https://github.com/websupport-sk/pecl-memcache/archive/php7.zip \
